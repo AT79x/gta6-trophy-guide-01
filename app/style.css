@@ -1,7 +1,92 @@
-body { font-family: Arial, sans-serif; margin: 24px; color: #222; }
-header { display: flex; justify-content: space-between; align-items: baseline; }
-.controls { display: flex; gap: 16px; margin: 12px 0; align-items: center; }
-.import input { font-size: 12px; }
-table { border-collapse: collapse; width: 100%; }
-th, td { border-bottom: 1px solid #ddd; padding: 6px 8px; text-align: left; vertical-align: top; white-space: pre-line; }
-th { background: #f2f2f2; }
+/* Leonida Legend — Vice City sunset / neon look, all original CSS. */
+:root {
+  --bg: #160a24;
+  --bg2: #221033;
+  --panel: #251338;
+  --panel2: #2e1845;
+  --ink: #fdf6ec;
+  --muted: #c9b8d8;
+  --pink: #ff5e8a;
+  --orange: #ff9a3d;
+  --teal: #2de2c5;
+  --gold: #ffd166;
+  --silver: #cfd8dc;
+  --bronze: #e0a458;
+  --line: #4a2d63;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #1c0b2e 0%, var(--bg) 30%, #12071d 100%);
+  color: var(--ink);
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  line-height: 1.5;
+}
+.hero {
+  padding: 28px 20px 22px;
+  background: linear-gradient(100deg, #ff5e8a 0%, #ff7a45 45%, #7b2fbe 100%);
+  color: #fff;
+}
+.hero h1 {
+  margin: 2px 0 6px;
+  font-size: 44px;
+  letter-spacing: 1px;
+  text-shadow: 0 3px 0 rgba(0,0,0,.25);
+}
+.kicker { margin: 0; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; opacity: .95; }
+.sub { max-width: 860px; margin: 0 0 14px; font-size: 16px; }
+.stats { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14px; }
+.stats strong { color: var(--gold); }
+.progressBar { height: 12px; background: rgba(0,0,0,.35); border-radius: 8px; margin-top: 12px; max-width: 860px; overflow: hidden; }
+#progressFill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--teal), var(--gold)); transition: width .3s; }
+main { max-width: 980px; margin: 0 auto; padding: 18px 16px 40px; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; margin-bottom: 16px; }
+.panel h2 { margin: 0 0 8px; font-size: 21px; color: var(--gold); }
+.warn { border-color: var(--pink); background: #3a1230; }
+.warn h2 { color: var(--pink); }
+.cite { color: var(--muted); font-size: 13px; }
+.roadmap { margin: 0; padding-left: 22px; }
+.roadmap li { margin-bottom: 10px; }
+.roadmap li strong { color: var(--teal); }
+.controls .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.controls button, .controls .importLabel {
+  background: var(--panel2); color: var(--ink); border: 1px solid var(--line);
+  border-radius: 20px; padding: 7px 14px; font-size: 14px; cursor: pointer;
+}
+.controls button.active { background: var(--pink); border-color: var(--pink); color: #fff; font-weight: 700; }
+.controls button:hover { border-color: var(--pink); }
+.toggles { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; margin-bottom: 12px; font-size: 14px; }
+.toggles input[type="search"] { padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg2); color: var(--ink); min-width: 220px; }
+.io { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.importLabel input { display: none; }
+.note { color: var(--muted); font-size: 13px; margin: 10px 0 0; }
+.listHeading { font-size: 20px; }
+.trophyList { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.trophy { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+.trophy.earned { border-color: var(--teal); }
+.trophy .top { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+.trophy h3 { margin: 0; font-size: 17px; }
+.trophy .grade { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 2px 8px; border-radius: 10px; }
+.grade-platinum { background: #7b2fbe; color: #fff; }
+.grade-gold { background: var(--gold); color: #3a2a00; }
+.grade-silver { background: var(--silver); color: #263238; }
+.grade-bronze { background: var(--bronze); color: #3a2200; }
+.trophy .desc { color: var(--muted); margin: 4px 0 6px; font-style: italic; }
+.trophy .guide { margin: 6px 0; font-size: 15px; }
+.trophy .sources { font-size: 13px; color: var(--teal); margin: 4px 0 0; }
+.trophy .sources a { color: var(--teal); }
+.flag { font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 10px; background: var(--pink); color: #fff; }
+.flag.hiddenFlag { background: #5c4a72; }
+.trophy .actions { display: flex; gap: 10px; align-items: center; margin-top: 8px; }
+.trophy .actions button { background: var(--bg2); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 5px 10px; cursor: pointer; }
+.trophy input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--teal); }
+.detail h2 { color: var(--gold); }
+.detail .guide { font-size: 16px; }
+footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 14px; }
+/* Deterministic screenshot states: each ?shot= view hides the sections above
+   its subject so the subject sits at the top of the 1280x800 viewport. */
+body.shot-checklist #roadmapSection, body.shot-checklist #missableBanner { display: none; }
+body.shot-detail .hero, body.shot-detail #missableBanner, body.shot-detail #roadmapSection { display: none; }
+body.shot-roadmap .hero, body.shot-roadmap #missableBanner { display: none; }
+body.shot-filter .hero, body.shot-filter #missableBanner, body.shot-filter #roadmapSection { display: none; }
+@media (max-width: 640px) { .hero h1 { font-size: 32px; } }

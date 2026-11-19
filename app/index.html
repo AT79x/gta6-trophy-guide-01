@@ -3,23 +3,73 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
+<title>Leonida Legend — GTA VI Trophy Guide &amp; Tracker</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<header class="hero">
+  <p class="kicker">Grand Theft Auto VI &middot; PlayStation 5 &middot; Offline guide</p>
+  <h1>Leonida Legend</h1>
+  <p class="sub">Every one of the 55 trophies — official name, description and grade, a guide in our own words with its sources, a roadmap to the platinum, and a tracker that remembers your progress.</p>
+  <div class="stats" id="stats">
+    <span><strong id="earnedCount">0</strong> / 55 earned</span>
+    <span><strong id="pct">0%</strong> to platinum</span>
+    <span>1 Platinum &middot; 2 Gold &middot; 6 Silver &middot; 46 Bronze</span>
+    <span>28 hidden &middot; 1 missable &middot; ~200 hours</span>
+  </div>
+  <div class="progressBar"><div id="progressFill"></div></div>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
+
+<main>
+  <section class="panel warn" id="missableBanner">
+    <h2>⚠ The one trophy you can miss</h2>
+    <p><strong>Positive Mental Attitude</strong> — Lucia's balcony meditation in Chapter 1 disappears after that chapter, and GTA VI has <strong>no mission replay</strong>. Do it in Chapter 1 and keep a manual save at the start of every chapter, plus one before the final mission. Every other trophy can be earned in free roam after the story.</p>
+    <p class="cite">Sources: PowerPyx, Kengamer, Output Lag — see the trophy's guide below.</p>
+  </section>
+
+  <section class="panel" id="roadmapSection">
+    <h2>Roadmap to the platinum — “Vice Got a Price!”</h2>
+    <ol class="roadmap" id="roadmapList"></ol>
+    <p class="cite">Built from the official trophy descriptions. Order: story first, side-character finales next, activities and collectibles after, 100% completion last. No online trophies, no difficulty trophies. Sources: PowerPyx trophy guide &amp; roadmap; Kengamer platinum roadmap; Output Lag trophy list.</p>
+  </section>
+
+  <section class="panel controls" aria-label="Tracker controls">
+    <div class="filters" id="filters">
+      <button type="button" data-filter="all" class="active">All 55</button>
+      <button type="button" data-filter="story">Story</button>
+      <button type="button" data-filter="missable">⚠ Missable</button>
+      <button type="button" data-filter="collectible">Collectibles</button>
+      <button type="button" data-filter="activity">Activities</button>
+      <button type="button" data-filter="online">Online (none)</button>
+      <button type="button" data-filter="earned">Earned</button>
+      <button type="button" data-filter="remaining">Still to earn</button>
+    </div>
+    <div class="toggles">
+      <label><input type="checkbox" id="spoilerToggle"> Spoiler-safe: hide story trophy names &amp; descriptions until earned</label>
+      <label><input type="checkbox" id="hideEarnedToggle"> Hide earned</label>
+      <input type="search" id="search" placeholder="Search a trophy…" aria-label="Search trophies">
+    </div>
+    <div class="io">
+      <button type="button" id="exportBtn">Export progress (.json)</button>
+      <label class="importLabel">Import progress <input type="file" id="importFile" accept="application/json,.json"></label>
+      <button type="button" id="resetBtn">Reset progress</button>
+      <span id="ioMsg" role="status"></span>
+    </div>
+    <p class="note">Progress is saved in this browser (localStorage). Export backs it up to a file; import restores it. Nothing leaves your device — this guide works fully offline.</p>
+  </section>
+
+  <section id="detailPanel" class="panel detail" hidden></section>
+
+  <section aria-label="Trophy checklist">
+    <h2 class="listHeading">Checklist — <span id="shownCount"></span></h2>
+    <ul class="trophyList" id="trophyList"></ul>
+  </section>
+
+  <footer>
+    <p>Official trophy names and descriptions are shown as PlayStation publishes them. All guides are written in our own words for this guide; each one names its sources. No Rockstar Games logo, artwork or game screenshots are used. Sources for the list: Exophase and PSNProfiles (18 Nov 2026); guides draw on PowerPyx, Kengamer, Output Lag, GTA Vice City Hub and GTA Zone. An older datamine leak called the platinum “Vice City Legend” — the published list names it “Vice Got a Price!”.</p>
+    <p>Leonida Legend is an unofficial fan guide. Grand Theft Auto and GTA are trademarks of Take-Two Interactive; this guide is not affiliated with or endorsed by Rockstar Games.</p>
+  </footer>
+</main>
 <script type="module" src="app.js"></script>
 </body>
 </html>
